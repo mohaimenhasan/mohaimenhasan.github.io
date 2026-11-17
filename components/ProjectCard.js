@@ -8,7 +8,9 @@ const ProjectCard = ({
   tags = [], 
   githubUrl, 
   liveUrl, 
-  codeSnippet
+  codeSnippet,
+  icon,
+  notice
 }) => {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -21,33 +23,8 @@ const ProjectCard = ({
       transition={{ duration: 0.3 }}
     >
       <div className="p-6 flex-1">
-        <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-bold text-white">{title}</h3>
-          <div className="flex space-x-3">
-            {githubUrl && (
-              <motion.a 
-                href={githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white"
-                whileHover={{ scale: 1.2 }}
-              >
-                <FaGithub size={18} />
-              </motion.a>
-            )}
-            {liveUrl && (
-              <motion.a 
-                href={liveUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white"
-                whileHover={{ scale: 1.2 }}
-              >
-                <FaExternalLinkAlt size={16} />
-              </motion.a>
-            )}
-          </div>
-        </div>
+        {icon && <div aria-hidden="true" className="text-code-blue text-3xl mb-5">{icon}</div>}
+        <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
         
         <p className="text-gray-300 mb-4">{description}</p>
         
@@ -62,6 +39,8 @@ const ProjectCard = ({
           ))}
         </div>
 
+        {notice && <p className="text-sm text-code-yellow mb-4">{notice}</p>}
+
         {codeSnippet && (
           <motion.button
             className="text-sm text-code-yellow hover:text-code-blue font-mono flex items-center"
@@ -73,6 +52,33 @@ const ProjectCard = ({
           </motion.button>
         )}
       </div>
+
+      {(liveUrl || githubUrl) && (
+        <div className="flex flex-wrap gap-4 px-6 pb-6">
+          {liveUrl && (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${title} (opens in a new tab)`}
+              className="inline-flex items-center gap-2 text-sm text-code-blue hover:underline"
+            >
+              Open project <FaExternalLinkAlt size={12} aria-hidden="true" />
+            </a>
+          )}
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${title} source on GitHub (opens in a new tab)`}
+              className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white hover:underline"
+            >
+              <FaGithub size={16} aria-hidden="true" /> Source
+            </a>
+          )}
+        </div>
+      )}
       
       {codeSnippet && showDetails && (
         <motion.div 

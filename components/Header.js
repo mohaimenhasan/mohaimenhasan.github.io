@@ -40,6 +40,7 @@ const Header = ({ currentPage }) => {
     { href: '/', text: 'Home', id: 'home' },
     { href: '/about', text: 'About', id: 'about' },
     { href: '/projects', text: 'Projects', id: 'projects' },
+    { href: '/fun-projects', text: 'Fun Projects', id: 'fun-projects' },
     { href: '/blog', text: 'Blog', id: 'blog' },
     { href: '/contact', text: 'Contact', id: 'contact' },
   ];
@@ -60,18 +61,19 @@ const Header = ({ currentPage }) => {
             <span className="text-code-blue">/&gt;</span>
           </Link>
           
-          <div className="ml-6 hidden md:block">
+          <div className="ml-6 hidden 2xl:block">
             <TypingEffect text="Mohaimen Khan // Senior Software Engineer" />
           </div>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <ul className="flex space-x-6">
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center space-x-8">
+          <ul className="flex space-x-6 whitespace-nowrap">
             {links.map((link) => (
               <li key={link.id}>
                 <Link 
                   href={link.href} 
+                  aria-current={currentPage === link.id ? 'page' : undefined}
                   className={`hover:text-code-blue transition-colors py-2 ${
                     currentPage === link.id ? 'text-code-blue border-b-2 border-code-blue' : 'text-gray-300'
                   }`}
@@ -101,7 +103,10 @@ const Header = ({ currentPage }) => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-gray-300 focus:outline-none" 
+          className="lg:hidden text-gray-300 focus:outline-none"
+          aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -111,16 +116,18 @@ const Header = ({ currentPage }) => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div 
+          id="mobile-navigation"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-terminal-black border-t border-gray-800 mt-4"
+          className="lg:hidden bg-terminal-black border-t border-gray-800 mt-4"
         >
           <ul className="py-2">
             {links.map((link) => (
               <li key={link.id}>
                 <Link 
                   href={link.href} 
+                  aria-current={currentPage === link.id ? 'page' : undefined}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block py-3 px-6 hover:bg-gray-800 transition-colors ${
                     currentPage === link.id ? 'text-code-blue border-l-4 border-code-blue pl-5' : 'text-gray-300'

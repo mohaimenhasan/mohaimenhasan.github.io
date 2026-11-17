@@ -1,6 +1,9 @@
 import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+
+const MotionLink = motion(Link);
 
 const projects = [
   {
@@ -99,14 +102,14 @@ export default function Projects() {
           <p className="text-gray-300 mb-6">
             For questions about my work or to connect, please reach out.
           </p>
-          <motion.a
-            href="/portfolio/contact"
+          <MotionLink
+            href="/contact"
             className="inline-block px-6 py-3 bg-code-blue text-white rounded font-medium hover:bg-blue-700 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Contact me
-          </motion.a>
+          </MotionLink>
         </motion.div>
       </div>
     </Layout>

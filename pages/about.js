@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { FaCode, FaCloud, FaRobot, FaDesktop, FaServer, FaDatabase } from 'react-icons/fa';
 
@@ -98,6 +99,8 @@ const skillCategories = [
 ];
 
 export default function About() {
+  const { basePath } = useRouter();
+
   return (
     <Layout
       title="About | Mohaimen Khan"
@@ -180,7 +183,7 @@ export default function About() {
               <h2 id="resume-heading" className="text-2xl font-bold text-white mb-4">
                 <span className="text-code-green mr-2">#</span> Resume
               </h2>
-              <ResumeViewer pdfUrl="/portfolio/Mohaimen_Khan_Resume.pdf" />
+              <ResumeViewer pdfUrl={`${basePath}/Mohaimen_Khan_Resume.pdf`} />
             </section>
           </aside>
         </div>

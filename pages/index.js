@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaBriefcase, FaLaptopCode, FaUserAlt, FaAward } from 'react-icons/fa';
 
+const MotionLink = motion(Link);
+
 const codeSnippet = `// Mohaimen Khan
 const focus = [
   'LLM evaluation and agent systems',
@@ -66,32 +68,32 @@ export default function Home() {
               </p>
               
               <div className="flex flex-wrap gap-3 mb-8">
-                <motion.a 
-                  href="/portfolio/about" 
+                <MotionLink
+                  href="/about"
                   className="px-6 py-3 rounded bg-code-blue text-white font-medium flex items-center gap-2 hover:bg-blue-700 transition"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaUserAlt /> About Me
-                </motion.a>
+                </MotionLink>
                 
-                <motion.a 
-                  href="/portfolio/projects" 
+                <MotionLink
+                  href="/projects"
                   className="px-6 py-3 rounded bg-gray-800 text-white font-medium flex items-center gap-2 hover:bg-gray-700 transition"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaLaptopCode /> Projects
-                </motion.a>
+                </MotionLink>
                 
-                <motion.a 
-                  href="/portfolio/contact" 
+                <MotionLink
+                  href="/contact"
                   className="px-6 py-3 rounded bg-gray-800 text-white font-medium flex items-center gap-2 hover:bg-gray-700 transition"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaBriefcase /> Contact
-                </motion.a>
+                </MotionLink>
               </div>
             </motion.div>
             
