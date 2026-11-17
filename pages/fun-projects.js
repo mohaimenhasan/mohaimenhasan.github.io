@@ -111,10 +111,10 @@ const projects = [
   },
 ];
 
-export default function FunProjects() {
+export default function Fun() {
   return (
     <Layout
-      title="Fun Projects | Mohaimen Khan"
+      title="Fun | Mohaimen Khan"
       description="Small experiments, browser games, music apps, and creative side projects by Mohaimen Khan."
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -127,7 +127,7 @@ export default function FunProjects() {
           <p className="text-code-yellow font-mono mb-4">Built out of curiosity</p>
           <h1 className="text-4xl font-bold text-white mb-6">
             <span className="text-code-green">&lt;</span>
-            Fun Projects
+            Fun
             <span className="text-code-green">/&gt;</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">

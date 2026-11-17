@@ -40,9 +40,9 @@ const Header = ({ currentPage }) => {
     { href: '/', text: 'Home', id: 'home' },
     { href: '/about', text: 'About', id: 'about' },
     { href: '/projects', text: 'Projects', id: 'projects' },
-    { href: '/fun-projects', text: 'Fun Projects', id: 'fun-projects' },
     { href: '/blog', text: 'Blog', id: 'blog' },
     { href: '/contact', text: 'Contact', id: 'contact' },
+    { href: '/fun-projects', text: 'Fun', id: 'fun-projects' },
   ];
 
   const socials = [
